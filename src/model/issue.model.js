@@ -1,50 +1,55 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const issueSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-    trim: true
+const issueSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Issue title is required"],
+      trim: true,
+      maxlength: 100,
+    },
+    description: {
+      type: String,
+      required: [true, "Issue description is required"],
+    },
+    status: {
+      type: String,
+      enum: ["open", "in-progress", "resolved", "closed"],
+      default: "open",
+    },
+    priority: {
+      type: String,
+      enum: ["low", "medium", "high", "critical"],
+      default: "medium",
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    assignedTo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    project: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Project",
+      required: true,
+    },
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+    attachments: [String], // array of URLs
+    tags: [String],
+    dueDate: {
+      type: Date,
+    },
   },
-  description: String,
-  type: {
-    type: String,
-    enum: ['bug', 'feature', 'task'],
-    default: 'bug'
-  },
-  status: {
-    type: String,
-    enum: ['open', 'in progress', 'resolved', 'closed'],
-    default: 'open'
-  },
-  priority: {
-    type: String,
-    enum: ['low', 'medium', 'high', 'critical'],
-    default: 'medium'
-  },
-  project: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Project',
-    required: true
-  },
-  reporter: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  assignee: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  attachments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Attachment'
-  }],
-  comments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }],
- 
-},{timestamps:true});
+  {timestamps: true}
+);
 
-export const Issue= mongoose.model('Issue', issueSchema);
+export const Issue = mongoose.model("Issue", issueSchema);
+
