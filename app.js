@@ -18,7 +18,7 @@ app.use(cookieParser());
 import rout from "./src/routes/user.routes.js";
 import issueRoutes from "./src/routes/issues.routes.js"
 import projectRoutes from "./src/routes/project.routes.js";
-import commentRoutes from "./comment.routes.js";
+import commentRoutes from "./src/routes/comment.routes.js";
 app.use("/api/v1/comment", commentRoutes);
 
 app.use("/api/v1/user",rout);
