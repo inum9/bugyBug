@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiErrorr.js";
 import { Project } from "../model/project.model.js";
 import { ApiResponse } from "../utils/apiResponse.js";
+import { createNotification } from "./notification.controller.js";
 
 export const createProject = asyncHandler(async (req, res) => {
   const { name, description } = req.body;
@@ -95,6 +96,8 @@ export const addMemberToProject = asyncHandler(async (req, res) => {
 
   project.members.push(userId);
   await project.save();
+  await createNotification(userId, `You were added to project "${project.name}"`);
+
 
   res.status(200).json(new ApiResponse(200, project, "Member added successfully"));
 });
