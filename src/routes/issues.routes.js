@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-  createIssue,getIssueById,updateIssue,deleteIssue
+  createIssue,getIssueById,updateIssue,deleteIssue,updateIssueStatus,updateIssuePriority
  
 } from "../controller/issues.controller.js"
 

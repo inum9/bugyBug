@@ -19,9 +19,8 @@ import rout from "./src/routes/user.routes.js";
 import issueRoutes from "./src/routes/issues.routes.js"
 import projectRoutes from "./src/routes/project.routes.js";
 import commentRoutes from "./src/routes/comment.routes.js";
-app.use("/api/v1/comment", commentRoutes);
-
 app.use("/api/v1/user",rout);
 app.use("/api/v1/issue",issueRoutes);
 app.use("/api/v1/project", projectRoutes);
+app.use("/api/v1/comment",commentRoutes);
 export default app;
