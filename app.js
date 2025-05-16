@@ -26,7 +26,7 @@ import dashboardRoutes from "./src/routes/dashboard.routes.js";
 app.use("/api/v1/dashboard", dashboardRoutes);
 app.use("/api/v1/user", rout);
 app.use("/api/v1/issue", issueRoutes);
-app.use("/api/v1/project", projectRoutes);
+app.use("/api/v1/project", projectRoutes);      //"682762da5ee52f32709b12c8",projectId
 app.use("/api/v1/comment", commentRoutes);
 app.use("/api/v1/notification", notificRoutes);
 export default app;
