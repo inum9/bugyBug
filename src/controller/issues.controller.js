@@ -46,4 +46,43 @@ const deleteIssue = asyncHandler(async (req, res) => {
 });
 
 
-export { createIssue, getIssueById ,updateIssue,deleteIssue};
+
+ const updateIssueStatus = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const validStatus = ["Open", "In Progress", "Resolved", "Closed"];
+  if (!validStatus.includes(status)) {
+    throw new ApiError(400, "Invalid status");
+  }
+
+  const issue = await Issue.findById(id);
+  if (!issue) throw new ApiError(404, "Issue not found");
+
+  issue.status = status;
+  await issue.save();
+
+  res.status(200).json(new ApiResponse(200, issue, "Issue status updated"));
+});
+
+ const updateIssuePriority = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { priority } = req.body;
+
+  const validPriorities = ["Low", "Medium", "High", "Critical"];
+  if (!validPriorities.includes(priority)) {
+    throw new ApiError(400, "Invalid priority");
+  }
+
+  const issue = await Issue.findById(id);
+  if (!issue) throw new ApiError(404, "Issue not found");
+
+  issue.priority = priority;
+  await issue.save();
+
+  res.status(200).json(new ApiResponse(200, issue, "Issue priority updated"));
+});
+
+
+
+export { createIssue, getIssueById ,updateIssue,deleteIssue,updateIssueStatus,updateIssuePriority};

@@ -47,6 +47,19 @@ const issueSchema = new mongoose.Schema(
     dueDate: {
       type: Date,
     },
+   
+
+status: {
+  type: String,
+  enum: ["Open", "In Progress", "Resolved", "Closed"],
+  default: "Open"
+},
+priority: {
+  type: String,
+  enum: ["Low", "Medium", "High", "Critical"],
+  default: "Medium"
+},
+
   },
   {timestamps: true}
 );

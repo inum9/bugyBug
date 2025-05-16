@@ -16,6 +16,12 @@ router.route("/")
 router.route("/:id")
   .get(verifyJwt, getIssueById)       
    .put(verifyJwt, updateIssue)        
-  .delete(verifyJwt, deleteIssue);    
+  .delete(verifyJwt, deleteIssue);  
+  
+
+
+router.patch("/:id/status", verifyJwt, updateIssueStatus);
+router.patch("/:id/priority", verifyJwt, updateIssuePriority);
+
 
 export default router;
