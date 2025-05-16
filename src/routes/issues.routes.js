@@ -4,7 +4,7 @@ import {
  
 } from "../controller/issues.controller.js"
 
-import { verifyJwt } from "../middleware/auth,middleware.js";
+import { verifyJwt } from "../middleware/auth.middleware.js";
 
 const router = Router();
 

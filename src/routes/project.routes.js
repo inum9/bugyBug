@@ -7,7 +7,7 @@ import {
   deleteProject,
   addMemberToProject
 } from "../controller/project.controllers.js";
-import { verifyJwt } from "../middleware/auth,middleware.js";
+import { verifyJwt } from "../middleware/auth.middleware.js";
 
 const router = Router();
 

@@ -14,8 +14,8 @@ router.route("/upload").post(
         
     
 )
-rout.route("/all").get(verifyJwt,getAttchment)
-rout.route("/:id").delete(verifyJwt,deleteAttachment );
+router.route("/all").get(verifyJwt,getAttchment)
+router.route("/:id").delete(verifyJwt,deleteAttachment );
 
 // add routes for GET, DELETE etc.
 

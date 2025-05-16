@@ -4,7 +4,7 @@ import {
   getCommentsForIssue,
   deleteComment,
 } from "../controller/comment.controller.js";
-import { verifyJwt } from "../middleware/auth,middleware.js";
+import { verifyJwt } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
